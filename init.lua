@@ -15,7 +15,7 @@ vim.o.number = true
 
 -- Use relative line numbers, so that it is easier to jump with j, k. This will affect the 'number'
 -- option above, see `:h number_relativenumber`
-vim.o.relativenumber = true
+-- vim.o.relativenumber = true
 
 -- Sync clipboard between OS and Neovim. Schedule the setting after `UiEnter` because it can
 -- increase startup-time. Remove this option if you want your OS clipboard to remain independent.
@@ -36,8 +36,14 @@ vim.o.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.o.scrolloff = 10
 
+-- Tab related settings
+vim.opt.tabstop = 4        -- A tab character displays as 4 spaces
+vim.opt.shiftwidth = 4     -- Indentation width for `>>` and `<<`
+vim.opt.expandtab = true   -- Insert spaces instead of tab characters
+vim.opt.softtabstop = 4    -- Makes backspace/delete behave like a tab (4 spaces)
+--
 -- Show <tab> and trailing spaces
-vim.o.list = true
+-- vim.o.list = true
 
 -- if performing an operation that would fail due to unsaved changes in the buffer (like `:q`),
 -- instead raise a dialog asking if you wish to save the current file(s) See `:help 'confirm'`
@@ -89,6 +95,11 @@ end, { desc = 'Print the git blame for the current line' })
 vim.cmd('packadd! nohlsearch')
 
 -----------------------------------------------------------------
-
--- lazy.nvim
 require("config.lazy")
+
+vim.keymap.set({ 'n' }, '<leader>tt', ':e todo.txt\n')
+vim.keymap.set({ 'n' }, '<leader>cc', ':e ~/.config/nvim/init.lua\n')
+-- vim.keymap.set({ 'n' }, '<leader>cc', ':e c:/Users/<user>t /AppData/Local/nvim/init.lua')
+vim.keymap.set({ 'i' }, 'jj', '<esc>')
+
+-----------------------------------------------------------------
